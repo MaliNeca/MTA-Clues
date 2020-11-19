@@ -74,7 +74,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     private List<Image> _pageSelectionImages;
 
     //container with Clues
-    private string[] playerOneClues = { "Trial-CV-CM-112020 is currently 26% effective.",
+    /*private string[] playerOneClues = { "Trial-CV-CM-112020 is currently 26% effective.",
                                         "Columbia Medical say progress on Trial-CV-CM-112020 is 3x faster than usual, and by the time it is developed it will be 3 times more effective than it is now.",
                                         "Columbia Medical predict it will take 18 months to complete their vaccine development.",
                                         "Trial-CV-CM-112020 is stored in the refrigeration unit at Columbia Medical.",
@@ -101,16 +101,15 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                                         "Charlie Hainsworth of Boston Vaccines shows the vaccine is effective when refrigerated",
                                         "Recent tests show that Viribus is stable up to 50 degrees C",
                                         "The projected cost per dose of Viribus is $.80"
-                                        };
+                                        };*/
+    private string[] playerOneClues;
+    private string[] playerTwoClues;
+    private string[] playerThreeClues;
+    private string[] playerFourClues;
 
 
+  
 
-    /* 
-     vac1 Trial-CV-CM-112020  comp 1 Columbia Medical
-     vac2 
-     
-     */
-    //------------------------------------------------------------------------
     void Start()
     {
         _scrollRectComponent = GetComponent<ScrollRect>();
@@ -120,7 +119,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
             case 1:
                 {
                     _scrollRectComponent.content = playerOneContainer.GetComponent<RectTransform>();
-                 
+                    playerOneClues = LoadScene.playerOneClues;
                     playerTwoContainer.SetActive(false);
                     playerThreeContainer.SetActive(false);
                     playerFourContainer.SetActive(false);
@@ -128,8 +127,9 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                 }
             case 2:
                 {
-                    // _scrollRectComponent.content = playerTwoContainer;
+                    
                     _scrollRectComponent.content = playerTwoContainer.GetComponent<RectTransform>();
+                    playerTwoClues = LoadScene.playerTwoClues;
                     playerOneContainer.SetActive(false);
                     playerThreeContainer.SetActive(false);
                     playerFourContainer.SetActive(false);
@@ -139,6 +139,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                 {
                     //_scrollRectComponent.content = playerThreeContainer;
                     _scrollRectComponent.content = playerThreeContainer.GetComponent<RectTransform>();
+                    playerThreeClues = LoadScene.playerThreeClues;
                     playerOneContainer.SetActive(false);
                     playerTwoContainer.SetActive(false);
                     playerFourContainer.SetActive(false);
@@ -148,6 +149,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                 {
                     // _scrollRectComponent.content = playerFourContainer;
                     _scrollRectComponent.content = playerFourContainer.GetComponent<RectTransform>();
+                    playerFourClues = LoadScene.playerFourClues;
                     playerOneContainer.SetActive(false);
                     playerTwoContainer.SetActive(false);
                     playerThreeContainer.SetActive(false);

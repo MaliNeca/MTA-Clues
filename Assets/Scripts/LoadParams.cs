@@ -7,7 +7,7 @@ public class LoadParams : MonoBehaviour
    
     void Start()
     {
-        Debug.Log(LoadScene.playerID);
+        Debug.Log("Player ID" +LoadScene.playerID);
     }
     
 }
