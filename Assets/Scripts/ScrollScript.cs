@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 [RequireComponent(typeof(Image))]
 [RequireComponent(typeof(Mask))]
@@ -29,6 +30,16 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     public Sprite selectedPage;
     [Tooltip("Container with page images (optional)")]
     public Transform pageSelectionIcons;
+    [Tooltip("Clue text field")]
+    public TextMeshProUGUI clue;
+    [Tooltip("Image for multiplayer")]
+    public GameObject playerOneContainer;
+    public GameObject playerTwoContainer;
+    public GameObject playerThreeContainer;
+    public GameObject playerFourContainer;
+
+
+
 
     // fast swipes should be fast and short. If too long, then it is not fast swipe
     private int _fastSwipeThresholdMaxLimit;
@@ -36,6 +47,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     private ScrollRect _scrollRectComponent;
     private RectTransform _scrollRectRect;
     private RectTransform _container;
+    private RectTransform _clues;
 
     private bool _horizontal;
 
@@ -61,14 +73,95 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     // container with Image components - one Image for each page
     private List<Image> _pageSelectionImages;
 
+    //container with Clues
+    private string[] playerOneClues = { "Trial-CV-CM-112020 is currently 26% effective.",
+                                        "Columbia Medical say progress on Trial-CV-CM-112020 is 3x faster than usual, and by the time it is developed it will be 3 times more effective than it is now.",
+                                        "Columbia Medical predict it will take 18 months to complete their vaccine development.",
+                                        "Trial-CV-CM-112020 is stored in the refrigeration unit at Columbia Medical.",
+                                        "Columbia Medical have produced a standard batch of 15'000 vaccines.",
+                                        "The projected cost per batch of Trial-CV-CM-112020 is $22'500"
+                                        };
+    private string[] playerTwoClues = { "Colombia Medicine have recently been able to double their vaccine",
+                                        "Previously, Generator was only 47% effective",
+                                        "Colombia Medicine anticipate their vaccine will be ready in 8 months’ time",
+                                        "Generator is stored in the secure refrigeration unit at the facility",
+                                        "The currently cost per dose of vaccine 2 is $2.25",
+                                        "By the time of manufacturing Colombia Medicine predict their new machinery will reduce the cost per dose by 75%"
+                                        };
+    private string[] playerThreeClues = {"Currently Elizabeth is 51% effective, and we have 3 further iterations of the vaccine planned",
+                                        "Each iteration of Elizabeth has so far has increase its effectiveness by 6% points",
+                                        "The final version of Elizabeth will be available in 5 months’ time",
+                                        "Elizabeth is stable when refrigerated",
+                                        "The test run by Eton Innovation show that Elizabeth is stable above 5 degrees C",
+                                        "Eton Innovation project the cost per dose of their vaccine to be less than one 1$"
+                                        };
+    private string[] playerFourClues = {"The Viribus is 91% effective",
+                                        "Boston Vaccines are very confident their vaccine will be ready in 9 months’ time",
+                                        "Charlie Hainsworth says they can half the speed of development for a cost per dose increase of $0.15",
+                                        "Charlie Hainsworth of Boston Vaccines shows the vaccine is effective when refrigerated",
+                                        "Recent tests show that Viribus is stable up to 50 degrees C",
+                                        "The projected cost per dose of Viribus is $.80"
+                                        };
+
+
+
+    /* 
+     vac1 Trial-CV-CM-112020  comp 1 Columbia Medical
+     vac2 
+     
+     */
     //------------------------------------------------------------------------
     void Start()
     {
         _scrollRectComponent = GetComponent<ScrollRect>();
         _scrollRectRect = GetComponent<RectTransform>();
+        switch (LoadScene.playerID)
+        {
+            case 1:
+                {
+                    _scrollRectComponent.content = playerOneContainer.GetComponent<RectTransform>();
+                 
+                    playerTwoContainer.SetActive(false);
+                    playerThreeContainer.SetActive(false);
+                    playerFourContainer.SetActive(false);
+                    break;
+                }
+            case 2:
+                {
+                    // _scrollRectComponent.content = playerTwoContainer;
+                    _scrollRectComponent.content = playerTwoContainer.GetComponent<RectTransform>();
+                    playerOneContainer.SetActive(false);
+                    playerThreeContainer.SetActive(false);
+                    playerFourContainer.SetActive(false);
+                    break;
+                }
+            case 3:
+                {
+                    //_scrollRectComponent.content = playerThreeContainer;
+                    _scrollRectComponent.content = playerThreeContainer.GetComponent<RectTransform>();
+                    playerOneContainer.SetActive(false);
+                    playerTwoContainer.SetActive(false);
+                    playerFourContainer.SetActive(false);
+                    break;
+                }
+            case 4:
+                {
+                    // _scrollRectComponent.content = playerFourContainer;
+                    _scrollRectComponent.content = playerFourContainer.GetComponent<RectTransform>();
+                    playerOneContainer.SetActive(false);
+                    playerTwoContainer.SetActive(false);
+                    playerThreeContainer.SetActive(false);
+                    break;
+                }
+            default:
+                {
+                    Debug.LogError("Player index was not found");
+                    break;
+                }
+        }
         _container = _scrollRectComponent.content;
         _pageCount = _container.childCount;
-
+      
         // is it horizontal or vertical scrollrect
         if (_scrollRectComponent.horizontal && !_scrollRectComponent.vertical)
         {
@@ -89,6 +182,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         // init
         SetPagePositions();
         SetPage(startingPage);
+        SetClue(startingPage);
         InitPageSelection();
         SetPageSelection(startingPage);
 
@@ -191,6 +285,210 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         _currentPage = aPageIndex;
     }
 
+    public void SetClue(int aPageIndex)
+    {
+        switch (LoadScene.playerID)
+        {
+            case 1:
+                {
+                    //set clue for player One
+                    switch (aPageIndex)
+                    {
+
+                        case 0:
+                            {   //set first clue on page 1
+                                clue.text = playerOneClues[0];
+                                break;
+                            }
+                        case 1:
+                            {
+                                //set second clue on page 2 
+                                clue.text = playerOneClues[1];
+                                break;
+                            }
+                        case 2:
+                            {
+                                //set third clue on page 3
+                                clue.text = playerOneClues[2];
+                                break;
+                            }
+                        case 3:
+                            {
+                                //set fourth clue on page 4
+                                clue.text = playerOneClues[3];
+                                break;
+                            }
+                        case 4:
+                            {
+                                //set fifth clue on page 5
+                                clue.text = playerOneClues[4];
+                                break;
+                            }
+                        case 5:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerOneClues[5];
+                                break;
+                            }
+
+                        default: break;
+                    }
+
+
+                    break;
+                }
+            case 2:
+                {
+                    //set clue for player Two
+                    switch (aPageIndex)
+                    {
+
+                        case 0:
+                            {   //set first clue on page 1
+                                clue.text = playerTwoClues[0];
+                                break;
+                            }
+                        case 1:
+                            {
+                                //set second clue on page 2 
+                                clue.text = playerTwoClues[1];
+                                break;
+                            }
+                        case 2:
+                            {
+                                //set third clue on page 3
+                                clue.text = playerTwoClues[2];
+                                break;
+                            }
+                        case 3:
+                            {
+                                //set fourth clue on page 4
+                                clue.text = playerTwoClues[3];
+                                break;
+                            }
+                        case 4:
+                            {
+                                //set fifth clue on page 5
+                                clue.text = playerTwoClues[4];
+                                break;
+                            }
+                        case 5:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerTwoClues[5];
+                                break;
+                            }
+
+                        default: break;
+                    }
+                    break;
+                }
+            case 3:
+                {
+                    //set clue for player Three
+
+                    switch (aPageIndex)
+                    {
+
+                        case 0:
+                            {   //set first clue on page 1
+                                clue.text = playerThreeClues[0];
+                                break;
+                            }
+                        case 1:
+                            {
+                                //set second clue on page 2 
+                                clue.text = playerThreeClues[1];
+                                break;
+                            }
+                        case 2:
+                            {
+                                //set third clue on page 3
+                                clue.text = playerThreeClues[2];
+                                break;
+                            }
+                        case 3:
+                            {
+                                //set fourth clue on page 4
+                                clue.text = playerThreeClues[3];
+                                break;
+                            }
+                        case 4:
+                            {
+                                //set fifth clue on page 5
+                                clue.text = playerThreeClues[4];
+                                break;
+                            }
+                        case 5:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerThreeClues[5];
+                                break;
+                            }
+
+                        default: break;
+                    }
+                    break;
+
+                }
+            case 4:
+                {
+                    //set clue for player Four
+                    switch (aPageIndex)
+                    {
+
+                        case 0:
+                            {   //set first clue on page 1
+                                clue.text = playerFourClues[0];
+                                break;
+                            }
+                        case 1:
+                            {
+                                //set second clue on page 2 
+                                clue.text = playerFourClues[1];
+                                break;
+                            }
+                        case 2:
+                            {
+                                //set third clue on page 3
+                                clue.text = playerFourClues[2];
+                                break;
+                            }
+                        case 3:
+                            {
+                                //set fourth clue on page 4
+                                clue.text = playerFourClues[3];
+                                break;
+                            }
+                        case 4:
+                            {
+                                //set fifth clue on page 5
+                                clue.text = playerFourClues[4];
+                                break;
+                            }
+                        case 5:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerFourClues[5];
+                                break;
+                            }
+
+                        default: break;
+                    }
+
+                    break;
+                }
+            default:
+                {
+                    Debug.LogError("Player index was not found");
+                    break;
+                }
+
+
+        }
+        
+    }
+
     //------------------------------------------------------------------------
     private void LerpToPage(int aPageIndex)
     {
@@ -198,6 +496,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         _lerpTo = _pagePositions[aPageIndex];
         _lerp = true;
         _currentPage = aPageIndex;
+        SetClue(_currentPage);
     }
 
     //------------------------------------------------------------------------
@@ -259,12 +558,15 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     private void NextScreen()
     {
         LerpToPage(_currentPage + 1);
+        
     }
 
     //------------------------------------------------------------------------
     private void PreviousScreen()
     {
         LerpToPage(_currentPage - 1);
+       
+
     }
 
     //------------------------------------------------------------------------
