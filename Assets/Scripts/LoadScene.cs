@@ -46,8 +46,8 @@ public class LoadScene : MonoBehaviour
 
     public void startGame(int pID)
     {
+        AudioController.Instance.PlayClick();
         playerID = pID;
-
         clueList = new ArrayList();
         foreach (string c in pOneClues)
         {
@@ -78,6 +78,7 @@ public class LoadScene : MonoBehaviour
 
     public void backGame()
     {
+        AudioController.Instance.PlayClick();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 

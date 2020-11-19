@@ -25,9 +25,9 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     [Tooltip("Button to go to the next page (optional)")]
     public GameObject nextButton;
     [Tooltip("Sprite for unselected page (optional)")]
-    public Sprite unselectedPage;
+    public Image unselectedPage;
     [Tooltip("Sprite for selected page (optional)")]
-    public Sprite selectedPage;
+    public Image selectedPage;
     [Tooltip("Container with page images (optional)")]
     public Transform pageSelectionIcons;
     [Tooltip("Clue text field")]
@@ -37,7 +37,8 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     public GameObject playerTwoContainer;
     public GameObject playerThreeContainer;
     public GameObject playerFourContainer;
-
+    [Tooltip("Animators")]
+    public Animator TopLinesAnimator;
 
 
 
@@ -545,13 +546,12 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         // unselect old
         if (_previousPageSelectionIndex >= 0)
         {
-            _pageSelectionImages[_previousPageSelectionIndex].sprite = unselectedPage;
-            _pageSelectionImages[_previousPageSelectionIndex].SetNativeSize();
+            _pageSelectionImages[_previousPageSelectionIndex].transform.GetChild(0).gameObject.SetActive(false);
+            //_pageSelectionImages[_previousPageSelectionIndex].SetNativeSize();
         }
-
         // select new
-        _pageSelectionImages[aPageIndex].sprite = selectedPage;
-        _pageSelectionImages[aPageIndex].SetNativeSize();
+        _pageSelectionImages[aPageIndex].transform.GetChild(0).gameObject.SetActive(true);
+        //_pageSelectionImages[aPageIndex].SetNativeSize();
 
         _previousPageSelectionIndex = aPageIndex;
     }
@@ -559,13 +559,23 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     //------------------------------------------------------------------------
     private void NextScreen()
     {
+        if (_currentPage <5)
+        {
+            AudioController.Instance.PlayClick();
+            TopLinesAnimator.SetTrigger("open");
+        }
         LerpToPage(_currentPage + 1);
-        
     }
 
     //------------------------------------------------------------------------
     private void PreviousScreen()
     {
+        Debug.Log("CURRENT PAGE: " + _currentPage);
+        if (_currentPage >0)
+        {
+            AudioController.Instance.PlayClick();
+            TopLinesAnimator.SetTrigger("open");
+        }
         LerpToPage(_currentPage - 1);
        
 
