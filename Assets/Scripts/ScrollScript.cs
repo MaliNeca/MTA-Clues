@@ -346,6 +346,12 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                                 clue.text = playerOneClues[5];
                                 break;
                             }
+                        case 6:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerOneClues[6];
+                                break;
+                            }
 
                         default: break;
                     }
@@ -392,6 +398,12 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                             {
                                 //set sixth clue on page 6
                                 clue.text = playerTwoClues[5];
+                                break;
+                            }
+                        case 6:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerTwoClues[6];
                                 break;
                             }
 
@@ -441,6 +453,12 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                                 clue.text = playerThreeClues[5];
                                 break;
                             }
+                        case 6:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerThreeClues[6];
+                                break;
+                            }
 
                         default: break;
                     }
@@ -486,6 +504,12 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                             {
                                 //set sixth clue on page 6
                                 clue.text = playerFourClues[5];
+                                break;
+                            }
+                        case 6:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerFourClues[6];
                                 break;
                             }
 
@@ -619,7 +643,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     //------------------------------------------------------------------------
     private void NextScreen()
     {
-        if (_currentPage <5)
+        if (_currentPage <6)
         {
             AudioController.Instance.PlayClick();
             TopLinesAnimator.SetTrigger("open");

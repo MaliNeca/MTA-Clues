@@ -968,7 +968,7 @@ TextureImporter:
         width: 720
         height: 840
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -976,6 +976,153 @@ TextureImporter:
       bones: []
       spriteID: bbeb8fe1c0ba04d60800000000000000
       internalID: 7872480217191202491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 459 [Converted] 2 (1)_19
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 1725
+        width: 1024
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a009379cd4174ebd0800000000000000
+      internalID: -2601830105807089654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 459 [Converted] 2 (1)_20
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 2241
+        width: 944
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8958455a04298ac60800000000000000
+      internalID: 7829668758532949400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 459 [Converted] 2 (1)_23
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 2323
+        width: 168
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c5a70f65aa631a20800000000000000
+      internalID: 3031884232915396033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 459 [Converted] 2 (1)_24
+      rect:
+        serializedVersion: 2
+        x: 1877
+        y: 2557
+        width: 308
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 363a8102a07a44030800000000000000
+      internalID: 3478088474166862691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 459 [Converted] 2 (1)_25
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 1751
+        width: 1054
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21f46fcfab5321b50800000000000000
+      internalID: 6562366684256423698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 459 [Converted] 2 (1)_26
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 67
+        width: 1704
+        height: 1540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79c3830bf7189c800800000000000000
+      internalID: 633179608039570583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 459 [Converted] 2 (1)_35
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 2723
+        width: 1514
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4543771f3e2be13a0800000000000000
+      internalID: -6692715304147536812
       vertices: []
       indices: 
       edges: []
