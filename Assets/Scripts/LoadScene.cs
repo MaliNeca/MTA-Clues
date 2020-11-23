@@ -37,11 +37,21 @@ public class LoadScene : MonoBehaviour
                                         "The projected cost per dose of Viribus is $.80"
                                         };
 
+    private string[] pQuestionList =
+    {
+        "Question1",
+        "Question2",
+        "Question3",
+        "Question4",
+        "Question5",
+        "Question6"
+    };
+
     public static string[] playerOneClues;
     public static string[] playerTwoClues;
     public static string[] playerThreeClues;
     public static string[] playerFourClues;
-
+    public static string[] playerQuestions;
     private ArrayList clueList;
 
     public void startGame(int pID)
@@ -70,7 +80,7 @@ public class LoadScene : MonoBehaviour
         playerTwoClues = getPlayerTwoClues();
         playerThreeClues = getPlayerThreeClues();
         playerFourClues = getPlayerFourClues();
-    
+        playerQuestions = getAllQuestions();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         
@@ -143,5 +153,10 @@ public class LoadScene : MonoBehaviour
         }
         return list;
 
+    }
+
+    public string[] getAllQuestions()
+    {
+        return pQuestionList;
     }
 }

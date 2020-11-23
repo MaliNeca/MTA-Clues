@@ -37,6 +37,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     public GameObject playerTwoContainer;
     public GameObject playerThreeContainer;
     public GameObject playerFourContainer;
+    public GameObject playerQuestionsContainer;
     [Tooltip("Animators")]
     public Animator TopLinesAnimator;
 
@@ -107,7 +108,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     private string[] playerTwoClues;
     private string[] playerThreeClues;
     private string[] playerFourClues;
-
+    private string[] playerQuestions;
 
   
 
@@ -124,6 +125,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                     playerTwoContainer.SetActive(false);
                     playerThreeContainer.SetActive(false);
                     playerFourContainer.SetActive(false);
+                    playerQuestionsContainer.SetActive(false);
                     break;
                 }
             case 2:
@@ -134,6 +136,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                     playerOneContainer.SetActive(false);
                     playerThreeContainer.SetActive(false);
                     playerFourContainer.SetActive(false);
+                    playerQuestionsContainer.SetActive(false);
                     break;
                 }
             case 3:
@@ -144,6 +147,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                     playerOneContainer.SetActive(false);
                     playerTwoContainer.SetActive(false);
                     playerFourContainer.SetActive(false);
+                    playerQuestionsContainer.SetActive(false);
                     break;
                 }
             case 4:
@@ -154,8 +158,17 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                     playerOneContainer.SetActive(false);
                     playerTwoContainer.SetActive(false);
                     playerThreeContainer.SetActive(false);
+                    playerQuestionsContainer.SetActive(false);
                     break;
                 }
+            case 5:
+                _scrollRectComponent.content = playerQuestionsContainer.GetComponent<RectTransform>();
+                playerQuestions = LoadScene.playerQuestions;
+                playerOneContainer.SetActive(false);
+                playerTwoContainer.SetActive(false);
+                playerThreeContainer.SetActive(false);
+                playerFourContainer.SetActive(false);
+                break;
             default:
                 {
                     Debug.LogError("Player index was not found");
@@ -473,6 +486,53 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                             {
                                 //set sixth clue on page 6
                                 clue.text = playerFourClues[5];
+                                break;
+                            }
+
+                        default: break;
+                    }
+
+                    break;
+                }
+            case 5:
+                {
+                    //set clue for player Four
+                    switch (aPageIndex)
+                    {
+
+                        case 0:
+                            {   //set first clue on page 1
+                                clue.text = playerQuestions[0];
+                                break;
+                            }
+                        case 1:
+                            {
+                                //set second clue on page 2 
+                                clue.text = playerQuestions[1];
+                                break;
+                            }
+                        case 2:
+                            {
+                                //set third clue on page 3
+                                clue.text = playerQuestions[2];
+                                break;
+                            }
+                        case 3:
+                            {
+                                //set fourth clue on page 4
+                                clue.text = playerQuestions[3];
+                                break;
+                            }
+                        case 4:
+                            {
+                                //set fifth clue on page 5
+                                clue.text = playerQuestions[4];
+                                break;
+                            }
+                        case 5:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerQuestions[5];
                                 break;
                             }
 

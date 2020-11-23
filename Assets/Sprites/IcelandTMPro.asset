@@ -51,7 +51,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: IcelandTMPro Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: GLOW_ON UNDERLAY_ON
+  m_ShaderKeywords: UNDERLAY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -93,7 +93,7 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.5
-    - _FaceDilate: 0
+    - _FaceDilate: 0.2
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -107,12 +107,12 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.05
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
-    - _ScaleRatioB: 0.6770833
-    - _ScaleRatioC: 0.30403382
+    - _ScaleRatioB: 0.5104167
+    - _ScaleRatioC: 0.5104167
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -125,10 +125,10 @@ Material:
     - _StencilWriteMask: 255
     - _TextureHeight: 512
     - _TextureWidth: 512
-    - _UnderlayDilate: 1
-    - _UnderlayOffsetX: -1
-    - _UnderlayOffsetY: -1
-    - _UnderlaySoftness: 0.227
+    - _UnderlayDilate: -1
+    - _UnderlayOffsetX: 0.569
+    - _UnderlayOffsetY: -0.172
+    - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
     - _WeightBold: 0.75
