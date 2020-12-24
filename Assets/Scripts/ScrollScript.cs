@@ -307,6 +307,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         {
             case 1:
                 {
+                    SetDotsCount.Instance.Set8();
                     //set clue for player One
                     switch (aPageIndex)
                     {
@@ -352,6 +353,12 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                                 clue.text = playerOneClues[6];
                                 break;
                             }
+                        case 7:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerOneClues[7];
+                                break;
+                            }
 
                         default: break;
                     }
@@ -361,6 +368,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                 }
             case 2:
                 {
+                    SetDotsCount.Instance.Set8();
                     //set clue for player Two
                     switch (aPageIndex)
                     {
@@ -404,6 +412,12 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                             {
                                 //set sixth clue on page 6
                                 clue.text = playerTwoClues[6];
+                                break;
+                            }
+                        case 7:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerTwoClues[7];
                                 break;
                             }
 
@@ -459,6 +473,12 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                                 clue.text = playerThreeClues[6];
                                 break;
                             }
+                        case 7:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerThreeClues[7];
+                                break;
+                            }
 
                         default: break;
                     }
@@ -512,6 +532,12 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                                 clue.text = playerFourClues[6];
                                 break;
                             }
+                        case 7:
+                            {
+                                //set sixth clue on page 6
+                                clue.text = playerFourClues[7];
+                                break;
+                            }
 
                         default: break;
                     }
@@ -559,6 +585,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
                                 clue.text = playerQuestions[5];
                                 break;
                             }
+
 
                         default: break;
                     }
@@ -643,11 +670,8 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     //------------------------------------------------------------------------
     private void NextScreen()
     {
-        if (_currentPage <6)
-        {
-            AudioController.Instance.PlayClick();
-            TopLinesAnimator.SetTrigger("open");
-        }
+        AudioController.Instance.PlayClick();
+        TopLinesAnimator.SetTrigger("open");
         LerpToPage(_currentPage + 1);
     }
 
